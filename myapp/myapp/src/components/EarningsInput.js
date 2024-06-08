@@ -1,4 +1,38 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  margin-bottom: 20px;
+`;
+
+const Label = styled.label`
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #333;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+`;
+
+const AddNewLink = styled.button`
+  background: none;
+  border: none;
+  color: #007BFF;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 
 const EarningsInput = ({ onAdd }) => {
   const [earningName, setEarningName] = useState('');
@@ -24,37 +58,39 @@ const EarningsInput = ({ onAdd }) => {
   };
 
   return (
-    <div>
-      <label htmlFor="earningName">Name:</label>
-      <input
+    <Container>
+      <Label htmlFor="earningName">Name:</Label>
+      <Input
         type="text"
         id="earningName"
         value={earningName}
         onChange={(e) => setEarningName(e.target.value)}
+        placeholder="Enter earning name"
       />
-      <label htmlFor="earningAmount">Amount:</label>
-      <input
+      <Label htmlFor="earningAmount">Amount:</Label>
+      <Input
         type="number"
         id="earningAmount"
         value={earningAmount}
         onChange={(e) => setEarningAmount(e.target.value)}
+        placeholder="Enter earning amount"
       />
-      <label htmlFor="epfApplicable">EPF Applicable:</label>
+      <Label htmlFor="epfApplicable">EPF Applicable:</Label>
       <input
         type="checkbox"
         id="epfApplicable"
         checked={epfApplicable}
         onChange={(e) => setEpfApplicable(e.target.checked)}
       />
-      <label htmlFor="etfApplicable">ETF Applicable:</label>
+      <Label htmlFor="etfApplicable">ETF Applicable:</Label>
       <input
         type="checkbox"
         id="etfApplicable"
         checked={etfApplicable}
         onChange={(e) => setEtfApplicable(e.target.checked)}
       />
-      <button onClick={handleAddEarning}>Add Earning</button>
-    </div>
+      <AddNewLink onClick={handleAddEarning}>+ Add New Allowance</AddNewLink>
+    </Container>
   );
 };
 
